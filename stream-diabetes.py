@@ -14,7 +14,7 @@ with col1:
     Pregnancies = st.text_input('Input Angka Kehamilan')
 
 with col2:
-    Glucose = st.text_input('Input Nilai Glukosa')
+    Glucose = st.text_input('Input Angka Glukosa')
 
 with col1:
     BloodPressure = st.text_input('Input Angka Tekanan Darah')
