@@ -1,40 +1,40 @@
 import pickle
 import streamlit as st
 
-# membaca model
+# Membaca model
 diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 
-#judul web
-st.title('Data Mining Prediksi Diabetes')
-
-#membagi kolom
+# Judul web
+st.title('Prediksi Diabetes Sekarang, Yuk!')
+# Subjudul di bawah judul utama
+st.markdown("<h6 style='text-align: center; color: red;background-color: rgba(192, 192, 192, 0.3); padding: 8px; border-radius: 8px;'>Ingat, Hasil Ini Hanya Prediksi Berdasarkan Data yang Anda Masukan.</h6>", unsafe_allow_html=True)
+# Membagi kolom
 col1, col2 = st.columns(2)
+with col1:
+    Pregnancies = st.text_input('Input Angka Kehamilan')
 
-with col1 :
-    Pregnancies = st.text_input ('input nilai Pregnancies')
+with col2:
+    Glucose = st.text_input('Input Nilai Glukosa')
 
-with col2 :
-    Glucose = st.text_input ('input nilai Glucose')
+with col1:
+    BloodPressure = st.text_input('Input Angka Tekanan Darah')
 
-with col1 :
-    BloodPressure = st.text_input ('input nilai Blood Pressure')
+with col2:
+    SkinThickness = st.text_input('Input Angka Ketebalan Lipatan Kulit')
 
-with col2 :
-    SkinThickness = st.text_input ('input nilai Skin Thickness')
+with col1:
+    Insulin = st.text_input('Input Angka Insulin')
 
-with col1 :
-    Insulin = st.text_input ('input nilai Insulin')
+with col2:
+    BMI = st.text_input('Input Angka BMI')
 
-with col2 :
-    BMI = st.text_input ('input nilai BMI')
+with col1:
+    DiabetesPedigreeFunction = st.text_input('Input Indikator Riwayat Diabetes')
 
-with col1 :
-    DiabetesPedigreeFunction = st.text_input ('input nilai Diabetes Pedigree Function')
+with col2:
+    Age = st.text_input('Input Umur')
 
-with col2 :
-    Age = st.text_input ('input nilai Age')
-
-# code untuk prediksi
+# Kode untuk prediksi
 diab_diagnosis = ''
 
 # membuat tombol untuk prediksi
@@ -45,4 +45,10 @@ if st.button('Test Prediksi Diabetes'):
         diab_diagnosis = 'Pasien terkena Diabetes'
     else:
         diab_diagnosis = 'Pasien tidak terkena Diabetes'
-st.success(diab_diagnosis)
+
+# Menampilkan hasil di tengah
+st.markdown(f"""
+    <div style='text-align: center; background-color: rgba(128, 128, 128, 0.5); padding: 10px; border-radius: 10px;'>
+        {diab_diagnosis}
+    </div>
+    """, unsafe_allow_html=True)
